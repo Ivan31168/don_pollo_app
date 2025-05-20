@@ -1,0 +1,17 @@
+<h2>Familias</h2>
+
+@if(familias()){
+
+    <ul>
+        @for (familia  of familias(); track familia.id) {
+            <li>{{familia.id}} : {{familia.nombre}}</li>
+        }
+    </ul>
+
+}@else {
+    <p>No hay familias</p>
+}
+
+@if (error()) {
+    <p>{{error()}}</p>
+}
