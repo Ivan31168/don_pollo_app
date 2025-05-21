@@ -1,0 +1,8 @@
+<h2>Listado de pedidos</h2>
+
+@if(pedidos().length){
+<p>{{pedidos() | json}}</p>
+
+}@else {
+    <p>No hay pedidos</p>
+}

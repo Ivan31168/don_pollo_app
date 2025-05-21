@@ -1,3 +1,26 @@
-<h1>Componente principal</h1>
-<app-listado-familias></app-listado-familias>
+<header>
+<h1>Pollitos</h1>
+<nav class="nav-menu">
+    <ul class="nav-menu">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/familias">Familias</a></li>
+        <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/signaldemo">Signals</a></li>
+        <li><a routerLink="/pedidos">Pedidos</a></li>
+    </ul>
+</nav>
+@if (nombre) {
+    <p>Bienvenido, {{nombre}}</p>
+    <ul>
+        @for (role of roles; track role) {
+            <li>{{role}}</li>
+        }
+    </ul>
+    <button (click)="logout()">Logout</button>
+}
+
+</header>
+
+<main>
 <router-outlet />
+</main>
