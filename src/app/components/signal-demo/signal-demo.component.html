@@ -1,13 +1,18 @@
-<h2>{{titulo}}</h2>
+<h2>{{ titulo }}</h2>
+
 <p>contador: {{ contador() }}</p>
 <p>contadorDoble: {{ contadorDoble() }}</p>
-<p>contadorSoloLectura: {{contadorSoloLectura()}}</p>
-<p>contadorLinkedSignal: {{contadorLinkedSignal()}}</p>
-<p>edad del usuario: {{usuario().edad}}</p>
-<p ></p>
+<p>contadorSoloLectura: {{ contadorSoloLectura() }}</p>
+<p>contadorLinkedSignal: {{ contadorLinkedSignal() }}</p>
+
+<p>usuario: {{ usuario() | json}}</p>
+
 <hr>
-<button (click)="incrementarContador()">Incrementar Contador</button>
+
+<button (click)="incrementarContador()">Incrementar Contador</button><br>
 <button (click)="resetContador()">Resetear Contador</button><br>
-<button (click)="incrementarContadorLinkedSignal()">Incrementar Contador Linked Signal</button>
-<button (click)="resetContadorLinkedSignal()">Resetear Contador Linked Signal</button>
-<button (click)="setearEdad()">Setear Edad</button>
+<button (click)="incrementarContadorLinkedSignal()">Incrementar ContadorLinkedSignal</button><br>       
+<button (click)="resetearContadorLinkedSignal()">Resetear ContadoLinkedSignal</button><br><br><br><br>
+
+<button (click)="cambiarEdadUsuario()">Cambiar Edad</button><br>
+

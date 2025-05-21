@@ -1,29 +1,34 @@
-import { Component, inject, signal, WritableSignal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { FamiliaService } from '../../services/familia.service';
 import { Familia } from '../../model/familia';
-import { JsonPipe } from '@angular/common';
-import { FamiliaService } from '../../services/familiaService/familiaService';
 
 @Component({
   selector: 'app-listado-familias',
+  imports: [],
   templateUrl: './listado-familias.component.html',
   styleUrl: './listado-familias.component.css'
 })
-export class ListadoFamiliasComponent {
-familias: WritableSignal<Familia[] | null> = signal<Familia[] | null>(null);
-private familiaServices = inject(FamiliaService);
-error:WritableSignal<string | null> = signal<string | null>(null);
+export class ListadoFamiliasComponent implements OnInit {
 
-ngOnInit(){
-this.familiaServices.getAll().subscribe({
-  next: data=> {this.familias.set(data);
-    this.error.set(null);
-  },
+  private familiaServices = inject(FamiliaService);
+  public familias = signal<Familia[]>([]);
+  public error = signal<string | null>(null);
 
-  error: error => {
-    console.error(error);
-    this.error.set("No se han podido cargar las familias");
+  ngOnInit() {
+
+    this.familiaServices.getAll().subscribe({
+      next: data => {
+        this.familias.set(data);
+        this.error.set(null);
+      },
+      error: err => {
+        console.error(err);
+        this.error.set('No se han podido cargar las familia!');
+      }
+    });
+
   }
-})
 
 }
-}
+
+
